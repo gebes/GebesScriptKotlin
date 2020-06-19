@@ -8,8 +8,9 @@ class print : Command() {
     override fun name(): String = "print"
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript) {
+
         if (parameter != null)
-            if (args.size == 0)
+            if (args.isEmpty())
                 print(parameter)
             else
                 println(parameter)
@@ -26,7 +27,8 @@ class println : Command() {
     override fun name(): String = "println"
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript) {
-        println(parameter)
+        if (parameter != null)
+            println(parameter)
         for (arg in args)
             println(arg)
     }
@@ -38,11 +40,14 @@ class wait : Command() {
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript) {
 
-        val time = parameter?.toFloatOrNull()
-            ?: throw ScriptRuntimeException("Invalid float parameter for wait: $parameter");
+        if (parameter == "for enter") {
+            readLine()
+        } else {
+            val time = parameter?.toFloatOrNull()
+                ?: throw ScriptRuntimeException("Invalid float parameter for wait: $parameter");
 
-        Thread.sleep((time * 1000).toLong())
-
+            Thread.sleep((time * 1000).toLong())
+        }
     }
 
 }

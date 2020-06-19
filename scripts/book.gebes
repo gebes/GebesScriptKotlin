@@ -1,0 +1,28 @@
+main
+
+ println
+  Chapter 1
+  =========
+  Some interesting stuff
+
+ // this waits for the user to make some input
+ wait for enter
+
+ println
+  Chapter 2
+  =========
+  More interesting stuff
+  but on another page
+
+ wait for enter
+
+ println
+  The end
+  =======
+  Sad end :c
+
+ wait for enter
+
+ println
+  Thanks for reading the book!
+  Author Gebes
