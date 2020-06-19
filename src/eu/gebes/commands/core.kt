@@ -23,7 +23,7 @@ class print : Command() {
 
 }
 
-class println : Command() {
+class println : Command() {«
     override fun name(): String = "println"
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript) {
