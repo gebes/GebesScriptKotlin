@@ -1,8 +1,30 @@
-# prints forever
+# different loop examples
 main
+ ->
+  once
+ -> 2
+  2
+ -> 3
+  3
  -> forever
-  print_stuff
+  forever
 
-print_stuff
+once
+ println
+  Once
+ wait 0.5
+
+2
+ println
+  2
+ wait 0.5
+
+3
+ println
+  3
+ wait 0.5
+
+forever
  println
   Forever
+ wait 0.5

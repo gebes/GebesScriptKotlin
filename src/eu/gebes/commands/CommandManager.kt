@@ -17,7 +17,7 @@ class CommandManager {
         registerCommand(print())
         registerCommand(println())
         registerCommand(methodCaller())
-        registerCommand(forever())
+        registerCommand(wait())
     }
 
 }
@@ -26,6 +26,6 @@ abstract class Command {
 
     abstract fun name(): String
 
-    abstract fun execute(label: String, args: List<String>, gebesScript: GebesScript)
+    abstract fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript)
 
 }

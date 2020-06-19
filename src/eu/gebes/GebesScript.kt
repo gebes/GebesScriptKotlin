@@ -30,7 +30,9 @@ class GebesScript(scriptFile: ScriptFile) {
 
                 val commandName = stripIntend(line)
 
-                methods.last.addCommand(commandName)
+                val s = commandName.split(" ".toRegex(),  2)
+
+                methods.last.addCommand(ScriptCommand(s[0], if (s.size == 2) s[1] else null))
 
             } else if (getIntend(line) == 2) {
 
@@ -80,18 +82,18 @@ class ScriptMethod(val name: String, val gebesScript: GebesScript) {
             val command = gebesScript.commandManager.getCommandByName(scriptCommand.name)
                 ?: throw ScriptRuntimeException("The command with the name ${scriptCommand.name} does not exist")
 
-            command.execute(scriptCommand.name, scriptCommand.arguments, gebesScript)
+            command.execute(scriptCommand.name, scriptCommand.parameter, scriptCommand.arguments, gebesScript)
 
         }
     }
 
-    fun addCommand(name: String) = commands.add(ScriptCommand(name))
+    fun addCommand(scriptCommand: ScriptCommand) = commands.add(scriptCommand)
 
     fun lastCommand(): ScriptCommand = commands.last
 
 }
 
-class ScriptCommand(val name: String) {
+class ScriptCommand(val name: String, val parameter: String?) {
 
     val arguments: LinkedList<String> = LinkedList()
 
