@@ -34,7 +34,7 @@ fun stripComments(lines: List<String>): List<String> {
 
         val line = stripIntend(l)
 
-        if (line.startsWith("//") or line.startsWith("#") or line.isEmpty())
+        if (line.startsWith("//") or line.startsWith("#") or (line.isEmpty() && l.length < 2))
             continue;
 
         newLines.add(l);

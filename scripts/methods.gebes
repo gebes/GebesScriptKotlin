@@ -1,11 +1,12 @@
 main
- println
-  Hello World!
  call once
   print_stuff
   print_stuff
   print_stuff
   print_stuff
+  print_stuff
+ println
+ call and repeat 5
   print_stuff
 
 print_stuff

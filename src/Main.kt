@@ -5,7 +5,7 @@ import kotlin.system.exitProcess
 
 fun main() {
 
-   val gebesScript = GebesScript(ScriptFile(File("./scripts/book.gebes")))
+   val gebesScript = GebesScript(ScriptFile(File("./scripts/methods.gebes")))
 
 
    gebesScript.invokeMethod("main")

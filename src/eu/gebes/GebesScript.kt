@@ -1,9 +1,9 @@
 package eu.gebes
 
-import eu.gebes.commands.Command
 import eu.gebes.commands.CommandManager
 import java.util.*
 import eu.gebes.utils.*
+import kotlin.NoSuchElementException
 
 class GebesScript(scriptFile: ScriptFile) {
 
@@ -18,29 +18,33 @@ class GebesScript(scriptFile: ScriptFile) {
 
         for (line in scriptFile.lines) {
 
-            if (getIntend(line) == 0) {
+            var intent = getIntend(line)
+
+
+            if (intent == 0 && line.isNotEmpty()) {
 
                 val name = stripIntend(line);
 
                 if (methodByName(name) != null)
-                    throw ParseException("Method with name $name already exists")
+                    throw ScriptParseException("Method with name $name already exists")
 
                 methods.add(ScriptMethod(name, this))
 
-            } else if (getIntend(line) == 1) {
+            } else if (intent == 1) {
 
                 val commandName = stripIntend(line)
 
-                val s = commandName.split(" ".toRegex(),  2)
+                val s = commandName.split(" ".toRegex(), 2)
 
                 methods.last.addCommand(ScriptCommand(s[0], if (s.size == 2) s[1] else null))
 
-            } else if (getIntend(line) == 2) {
+            } else {
 
                 val argument = stripIntend(line)
 
-                methods.last.lastCommand().addArgument(argument)
-
+                try {
+                    methods.last.lastCommand().addArgument(argument)
+                }catch(e: NoSuchElementException){}
             }
 
         }
@@ -56,7 +60,6 @@ class GebesScript(scriptFile: ScriptFile) {
     }
 
 
-
 }
 
 class ScriptMethod(val name: String, val gebesScript: GebesScript) {
@@ -69,8 +72,10 @@ class ScriptMethod(val name: String, val gebesScript: GebesScript) {
             val command = gebesScript.commandManager.getCommandByName(scriptCommand.name)
                 ?: throw ScriptRuntimeException("The command with the name ${scriptCommand.name} does not exist")
 
-            command.execute(scriptCommand.name, scriptCommand.parameter,
-                scriptCommand.arguments, gebesScript)
+            command.execute(
+                scriptCommand.name, scriptCommand.parameter,
+                scriptCommand.arguments, gebesScript
+            )
 
         }
     }
@@ -90,7 +95,7 @@ class ScriptCommand(val name: String, val parameter: String?) {
 
 }
 
-class ParseException(name: String) : Exception(name)
+class ScriptParseException(name: String) : Exception(name)
 class ScriptRuntimeException(name: String) : Exception(name)
 
 

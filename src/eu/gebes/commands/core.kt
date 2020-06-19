@@ -29,8 +29,12 @@ class println : Command() {
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript) {
         if (parameter != null)
             println(parameter)
-        for (arg in args)
-            println(arg)
+        for ((index, arg) in args.withIndex())
+            if (index == args.size - 1)
+                print(arg)
+            else
+                println(arg)
+        println("")
     }
 
 }

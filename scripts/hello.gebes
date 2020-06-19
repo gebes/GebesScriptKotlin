@@ -1,8 +1,12 @@
 # Basic Hello World example
 
 main
+
  println
-  Hello!
+  
+                               Hello!
+  
   This is the first HelloWorld Program written with GebesScript
   It has a complete new Syntax and hopefully can evolve quite fast.
   Also the parser is quite fast, due to this simple syntax
+
