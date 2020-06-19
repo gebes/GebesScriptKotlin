@@ -1,7 +1,7 @@
 main
  println
   Hello World!
- ->
+ call once
   print_stuff
   print_stuff
   print_stuff

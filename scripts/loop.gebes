@@ -1,30 +1,27 @@
-# different loop examples
+// different types of loops
+
 main
- ->
+ call and repeat once
   once
- -> 2
+ call and repeat 2
   2
- -> 3
+ call and repeat 3
   3
- -> forever
+ call and repeat forever
   forever
 
 once
- println
-  Once
+ println Once
  wait 0.5
 
 2
- println
-  2
+ println 2
  wait 0.5
 
 3
- println
-  3
+ println 3
  wait 0.5
 
 forever
- println
-  Forever
+ println Forever
  wait 0.5

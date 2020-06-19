@@ -2,6 +2,7 @@ package eu.gebes
 
 import java.io.File
 import java.util.*
+import eu.gebes.utils.*
 
 class ScriptFile {
 
@@ -31,12 +32,12 @@ fun stripComments(lines: List<String>): List<String> {
 
     for (l in lines) {
 
-        var line = l;
+        val line = stripIntend(l)
 
-        if (line.startsWith("//") or line.startsWith("#") or line.isEmpty() or line.replace(" ", "").isEmpty())
+        if (line.startsWith("//") or line.startsWith("#") or line.isEmpty())
             continue;
 
-        newLines.add(line);
+        newLines.add(l);
 
     }
     return newLines;

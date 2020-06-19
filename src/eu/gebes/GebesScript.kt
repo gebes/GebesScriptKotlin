@@ -3,6 +3,7 @@ package eu.gebes
 import eu.gebes.commands.Command
 import eu.gebes.commands.CommandManager
 import java.util.*
+import eu.gebes.utils.*
 
 class GebesScript(scriptFile: ScriptFile) {
 
@@ -54,21 +55,7 @@ class GebesScript(scriptFile: ScriptFile) {
         method.execute();
     }
 
-    private fun stripIntend(line: String): String {
-        return line.substring(getIntend(line), line.length)
-    }
 
-    private fun getIntend(line: String): Int {
-
-        var count = 0
-
-        for (char in line.toCharArray())
-            if (char == ' ')
-                count++
-            else return count
-
-        return count
-    }
 
 }
 
@@ -82,7 +69,8 @@ class ScriptMethod(val name: String, val gebesScript: GebesScript) {
             val command = gebesScript.commandManager.getCommandByName(scriptCommand.name)
                 ?: throw ScriptRuntimeException("The command with the name ${scriptCommand.name} does not exist")
 
-            command.execute(scriptCommand.name, scriptCommand.parameter, scriptCommand.arguments, gebesScript)
+            command.execute(scriptCommand.name, scriptCommand.parameter,
+                scriptCommand.arguments, gebesScript)
 
         }
     }
