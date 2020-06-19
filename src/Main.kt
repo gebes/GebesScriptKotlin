@@ -2,10 +2,11 @@ import eu.gebes.GebesScript
 import eu.gebes.ScriptFile
 import java.io.File
 
-fun main(args: Array<String>) {
+fun main() {
 
-   val gebesScript: GebesScript = GebesScript(ScriptFile(File("./scripts/hello.gebes")))
+   val gebesScript = GebesScript(ScriptFile(File("./scripts/loop.gebes")))
 
+   gebesScript.invokeMethod("main")
 
 
 }

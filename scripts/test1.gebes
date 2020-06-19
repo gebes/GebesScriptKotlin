@@ -1,0 +1,13 @@
+main
+ println
+  Hello World!
+ ->
+  print_stuff
+  print_stuff
+  print_stuff
+  print_stuff
+  print_stuff
+
+print_stuff
+ println
+  Stuff

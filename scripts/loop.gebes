@@ -1,0 +1,8 @@
+# prints forever
+main
+ -> forever
+  print_stuff
+
+print_stuff
+ println
+  Forever
