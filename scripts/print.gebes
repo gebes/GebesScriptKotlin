@@ -18,7 +18,6 @@ main
 
  println BOOTED
 
-
  // Empty linebreak
  println
 

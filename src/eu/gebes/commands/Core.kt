@@ -14,7 +14,6 @@ class Printer(
 
 
     fun print(l: String) {
-
         var line = l
         if (wait_symbol != null)
             line = l.replace(wait_symbol.toRegex(), "\t");
@@ -53,7 +52,6 @@ class printerCommand : Command() {
         var delay = 0f
         var wait_symbol: String? = null
         var wait_factor = 1f
-
         args.forEach { arg: String ->
 
             if (arg.startsWith("delay ")) {
@@ -116,7 +114,7 @@ class println : Command() {
         for ((index, arg) in args.withIndex())
             gebesScript.printer.println(arg)
 
-        if(parameter == null && args.isEmpty())
+        if (parameter == null && args.isEmpty())
             println("")
 
     }
