@@ -1,3 +1,50 @@
 # Multiple Print examples
 
 main
+
+ println Booting System
+
+ printer
+  delay 0.333
+
+ print 1..
+ print 2..
+ print 3..
+ // Entering no parameter resets the printer to default
+ printer
+
+ printer
+  delay 0.05
+
+ println BOOTED
+
+
+ // Empty linebreak
+ println
+
+ // wait for 2 seconds
+ wait 2
+
+ println
+
+ printer
+  delay 0.05
+  wait_symbol -wait
+  wait_factor 20
+
+ println Title of this beautiful story!-wait
+  This is the story of a guy who reads this,
+  and he is fascinated how easy it is, to
+  print something out to the console!
+  
+  And then he was shocked that you do not need that
+  silly old \n symbol, to make linbreaks anymore.
+  He was happy for the rest of his life
+
+  -wait-wait
+
+  Happy End!
+
+  -wait-wait
+
+  Book written by Gebes

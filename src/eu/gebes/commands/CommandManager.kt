@@ -14,9 +14,10 @@ class CommandManager {
         commands.stream().filter { t: Command -> t.name() == name}.findFirst().orElse(null)
 
     init {
+        registerCommand(printerCommand())
         registerCommand(print())
         registerCommand(println())
-        registerCommand(methodCaller())
+        registerCommand(MethodCaller())
         registerCommand(wait())
     }
 

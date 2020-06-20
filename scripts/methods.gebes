@@ -1,14 +1,17 @@
 main
+
  call once
   print_stuff
   print_stuff
   print_stuff
   print_stuff
   print_stuff
+
  println
- call and repeat 5
+ 
+ call 5 times
   print_stuff
 
 print_stuff
  println
-  Stuff
+  Stuff 

@@ -1,15 +1,19 @@
 package eu.gebes
 
 import eu.gebes.commands.CommandManager
+import eu.gebes.commands.Printer
 import java.util.*
 import eu.gebes.utils.*
 import kotlin.NoSuchElementException
 
 class GebesScript(scriptFile: ScriptFile) {
 
-    var commandManager: CommandManager = CommandManager()
+    val commandManager: CommandManager = CommandManager()
+    var printer = Printer(0)
+
 
     private var methods: LinkedList<ScriptMethod> = LinkedList()
+
 
     fun methodByName(name: String): ScriptMethod? =
         methods.stream().filter { t: ScriptMethod -> t.name == name }.findFirst().orElse(null);
@@ -18,7 +22,7 @@ class GebesScript(scriptFile: ScriptFile) {
 
         for (line in scriptFile.lines) {
 
-            var intent = getIntend(line)
+            val intent = getIntend(line)
 
 
             if (intent == 0 && line.isNotEmpty()) {
@@ -44,12 +48,16 @@ class GebesScript(scriptFile: ScriptFile) {
 
                 try {
                     methods.last.lastCommand().addArgument(argument)
-                }catch(e: NoSuchElementException){}
+                } catch (e: NoSuchElementException) {
+                }
             }
 
         }
 
     }
+
+
+
 
     fun invokeMethod(name: String) {
         val method = methodByName(name)

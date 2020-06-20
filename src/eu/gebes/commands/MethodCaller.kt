@@ -4,7 +4,7 @@ import eu.gebes.GebesScript
 import eu.gebes.ScriptRuntimeException
 import java.util.*
 
-class methodCaller : Command() {
+class MethodCaller : Command() {
     override fun name(): String = "call"
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript) {
@@ -21,6 +21,10 @@ class methodCaller : Command() {
 
             if(param.startsWith("and repeat "))
                 param = param.substring("and repeat ".length, param.length)
+
+            if(param.endsWith(" times"))
+                param = param.substring(0, param.length-" times".length)
+
 
             count = param.toIntOrNull()
                 ?: throw ScriptRuntimeException("Invalid parameter for Method Caller: $parameter")
