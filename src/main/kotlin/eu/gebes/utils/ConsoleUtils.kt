@@ -52,10 +52,12 @@ class FileSelector(private var folder: File) {
             }
 
 
-            println("0) Refresh this list")
+            println("Content of ./scripts")
+            println(" 0) Refresh this list")
             for ((index, file: File) in files.withIndex()) {
-                println("${index + 1}) ${file.name}");
+                println(" ${index + 1}) ${file.name}");
             }
+            println()
 
             var selection = 0
 
@@ -65,7 +67,7 @@ class FileSelector(private var folder: File) {
             } while (!(selection >= 0 && selection <= files.size))
 
             if (selection != 0)
-                return files.get(selection);
+                return files.get(selection-1);
 
 
         }

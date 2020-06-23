@@ -1,6 +1,6 @@
 package eu.gebes.commands
 
-import eu.gebes.GebesScript
+import eu.gebes.script.GebesScript
 import java.util.*
 
 

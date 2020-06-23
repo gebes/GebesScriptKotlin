@@ -1,8 +1,7 @@
 package eu.gebes.commands
 
-import eu.gebes.GebesScript
-import eu.gebes.ScriptRuntimeException
-import java.util.*
+import eu.gebes.script.GebesScript
+import eu.gebes.script.ScriptRuntimeException
 
 class MethodCaller : Command() {
     override fun name(): String = "call"

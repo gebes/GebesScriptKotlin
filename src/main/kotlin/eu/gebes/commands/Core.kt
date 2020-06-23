@@ -1,7 +1,7 @@
 package eu.gebes.commands
 
-import eu.gebes.GebesScript
-import eu.gebes.ScriptRuntimeException
+import eu.gebes.script.GebesScript
+import eu.gebes.script.ScriptRuntimeException
 
 /**
  * Prints stuff to the console with some extra animations/features

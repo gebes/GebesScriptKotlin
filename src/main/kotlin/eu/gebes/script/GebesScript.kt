@@ -1,4 +1,4 @@
-package eu.gebes
+package eu.gebes.script
 
 import eu.gebes.commands.CommandManager
 import eu.gebes.commands.Printer
@@ -40,7 +40,12 @@ class GebesScript(scriptFile: ScriptFile) {
 
                 val s = commandName.split(" ".toRegex(), 2)
 
-                methods.last.addCommand(ScriptCommand(s[0], if (s.size == 2) s[1] else null))
+                methods.last.addCommand(
+                    ScriptCommand(
+                        s[0],
+                        if (s.size == 2) s[1] else null
+                    )
+                )
 
             } else {
 

@@ -1,9 +1,8 @@
-package eu.gebes
+package eu.gebes.script
 
 import java.io.File
 import java.util.*
 import eu.gebes.utils.*
-import kotlin.streams.toList
 
 class ScriptFile {
 
