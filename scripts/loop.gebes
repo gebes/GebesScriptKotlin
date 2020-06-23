@@ -1,16 +1,13 @@
 // different types of loops
 
 main
- call and repeat once
+ call once
   once
- // note that this still works, if you let the
- // "and repeat" or "times" away. But don't forget,
- // to only have one space between everything!
- call and repeat 2 times
+ call 2 times
   2
- call and repeat 3 times
+ call 3 times
   3
- call and repeat forever
+ call forever
   forever
 
 once

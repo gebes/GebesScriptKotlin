@@ -66,7 +66,7 @@ class GebesScript(scriptFile: ScriptFile) {
 
     fun invokeMethod(name: String) {
         val method = methodByName(name)
-            ?: throw ScriptRuntimeException("The method with the name $name does not exist")
+            ?: throw ScriptMethodNotFoundException("The method with the name $name does not exist")
 
 
         method.execute();
@@ -110,3 +110,4 @@ class ScriptCommand(val name: String, val parameter: String?) {
 
 class ScriptParseException(name: String) : Exception(name)
 class ScriptRuntimeException(name: String) : Exception(name)
+class ScriptMethodNotFoundException(name: String) : Exception(name)
