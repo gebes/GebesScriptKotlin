@@ -1,6 +1,6 @@
 # Multiple Print examples
 
-main
+eu.gebes.main
 
  println Booting System
 
@@ -17,6 +17,14 @@ main
   delay 0.05
 
  println BOOTED
+
+ printer
+ println
+
+ print
+  Enter a new line to continue
+
+ wait for enter
 
  // Empty linebreak
  println
