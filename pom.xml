@@ -30,7 +30,7 @@
         </pluginRepository>
     </pluginRepositories>
     <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
