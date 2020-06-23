@@ -1,4 +1,4 @@
-eu.gebes.main
+main
 
  call once
   print_stuff

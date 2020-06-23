@@ -1,6 +1,6 @@
 # Basic Hello World example
 
-eu.gebes.main
+main
 
  println
   

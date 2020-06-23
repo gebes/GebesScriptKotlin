@@ -1,6 +1,6 @@
 // different types of loops
 
-eu.gebes.main
+main
  call and repeat once
   once
  // note that this still works, if you let the

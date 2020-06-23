@@ -19,6 +19,7 @@ class CommandManager {
         registerCommand(println())
         registerCommand(MethodCaller())
         registerCommand(wait())
+        registerCommand(clear())
     }
 
 }

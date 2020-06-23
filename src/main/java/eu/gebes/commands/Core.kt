@@ -138,3 +138,12 @@ class wait : Command() {
 
 }
 
+class clear : Command(){
+    override fun name(): String = "clear"
+
+    override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript) {
+        print("\u001b[H\u001b[2J")
+        System.out.flush()
+    }
+}
+
