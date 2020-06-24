@@ -4,4 +4,4 @@ main
   John
 
  println
-  Hallo %name%!
+  Hello %name%!
