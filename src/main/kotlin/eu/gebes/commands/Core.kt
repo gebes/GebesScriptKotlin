@@ -218,7 +218,7 @@ class If : Command() {
 
                 val list = statements[last]
 
-                list!!.add(args[i])
+                list!!.add(if (args[i].startsWith(" ")) args[i].substring(1, args[i].length) else args[i])
 
                 statements.put(last, list)
 
@@ -232,7 +232,7 @@ class If : Command() {
             if (entry.key.startsWith("equals ")) {
 
 
-                val valueToCompare = entry.key.substring("equals ".length, entry.key.length-1)
+                val valueToCompare = entry.key.substring("equals ".length, entry.key.length - 1)
 
                 if (value.toString() == valueToCompare) {
                     hasMatch = true

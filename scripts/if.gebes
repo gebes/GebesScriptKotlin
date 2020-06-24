@@ -9,17 +9,17 @@ choose_option
    2) No
 
  print
-  Choose an option: 
+  Choose an option:
 
  scan selectedOption
 
  if selectedOption
   equals 1:
-  option_yes
+   option_yes
   equals 2:
-  option_no
+   option_no
   else:
-  choose_option
+   choose_option
 
 option_yes
  println Nice! :)

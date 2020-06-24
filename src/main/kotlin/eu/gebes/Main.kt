@@ -29,11 +29,13 @@ fun main(args: Array<String>) {
 
         for (arg in args) {
 
+
+            if (arg.startsWith("--"))
+                continue;
+
             if (!args.contains(Parameter.NO_PREFIX.stringValue))
                 println("Executing script $arg")
 
-            if(arg.startsWith("--"))
-                continue;
 
             executeScript(File(arg))
 
