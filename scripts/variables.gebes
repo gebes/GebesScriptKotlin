@@ -4,4 +4,4 @@ main
   John
 
  println
-  Hello %name%!
+  Hello %name%! You will get a bonus of 5%%

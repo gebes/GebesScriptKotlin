@@ -16,7 +16,7 @@ class Printer(
 
 
     fun print(l: String) {
-        var line = l
+        var line = l.replace("%%", "\r")
         if (wait_symbol != null)
             line = l.replace(wait_symbol.toRegex(), "\t");
 
@@ -34,7 +34,7 @@ class Printer(
                 if (index + 1 == line.length)
                     throw ScriptRuntimeException("Empty variable reference")
 
-                var start = index  + 1
+                var start = index + 1
                 var i = start
 
                 var current = lineChars[i++]
@@ -45,10 +45,16 @@ class Printer(
                     name += current
                 }
 
+                if(i == lineChars.size-1){
+                    index++
+                    chars.add('%')
+                    continue
+                }
+
                 chars.addAll(gebesScript.variableManager.getVariable(name).toString().toCharArray().toTypedArray())
                 index += i - start + 1
             } else {
-                chars.add(char)
+                chars.add(if(char == '\r') '%' else char)
             }
             index++
         }
