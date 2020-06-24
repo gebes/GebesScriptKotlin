@@ -3,9 +3,12 @@ package eu.gebes.commands
 import eu.gebes.script.GebesScript
 import eu.gebes.script.ScriptRuntimeException
 
-fun valueFromString(value: String): Any {
+fun valueFromString(value: String?): Any {
 
     return when {
+        value == null -> {
+            "null"
+        }
         value.toIntOrNull() != null -> {
             value.toInt()
         }
@@ -70,5 +73,26 @@ class SetVariable : Command() {
         return null
     }
 
+
+}
+
+class ScanVariable : Command(){
+    override fun name(): String = "scan"
+
+    /**
+     * @param parameter is the name
+     * @param args if there are more than one elements, then a mutable list will be created
+     */
+    override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
+
+
+            if(parameter == null)
+                return "Parameter is required"
+
+            gebesScript.variableManager.setVariable(parameter, valueFromString(readLine()))
+
+
+        return null
+    }
 
 }

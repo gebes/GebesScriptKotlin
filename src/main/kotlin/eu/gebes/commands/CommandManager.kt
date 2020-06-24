@@ -21,6 +21,7 @@ class CommandManager {
         registerCommand(wait())
         registerCommand(clear())
         registerCommand(SetVariable())
+        registerCommand(ScanVariable())
     }
 
 }

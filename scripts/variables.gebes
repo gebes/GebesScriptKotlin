@@ -1,7 +1,9 @@
 main
 
- var name
-  John
+ scan name
+
+ var bonus
+  5%
 
  println
-  Hello %name%! You will get a bonus of 5%%
+  Hello %name%! You will get a bonus of %bonus%
