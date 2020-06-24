@@ -6,7 +6,7 @@ import eu.gebes.script.ScriptRuntimeException
 class MethodCaller : Command() {
     override fun name(): String = "call"
 
-    override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript) {
+    override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 
         var count = 0;
 
@@ -26,7 +26,7 @@ class MethodCaller : Command() {
 
 
             count = param.toIntOrNull()
-                ?: throw ScriptRuntimeException("Invalid parameter for Method Caller: $parameter")
+                ?: return "Invalid parameter for Method Caller: $parameter"
         }
 
         while (count != 0) {
@@ -35,6 +35,8 @@ class MethodCaller : Command() {
             if (count >= 0)
                 count--
         }
+
+        return null
 
     }
 

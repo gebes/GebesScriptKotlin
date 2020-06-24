@@ -2,6 +2,7 @@ package eu.gebes.script
 
 import eu.gebes.commands.CommandManager
 import eu.gebes.commands.Printer
+import eu.gebes.commands.VariableManager
 import java.util.*
 import eu.gebes.utils.*
 import kotlin.NoSuchElementException
@@ -9,7 +10,8 @@ import kotlin.NoSuchElementException
 class GebesScript(scriptFile: ScriptFile) {
 
     val commandManager: CommandManager = CommandManager()
-    var printer = Printer(0)
+    val variableManager = VariableManager()
+    var printer = Printer(gebesScript = this, delay = 0)
 
 
     private var methods: LinkedList<ScriptMethod> = LinkedList()
@@ -62,14 +64,12 @@ class GebesScript(scriptFile: ScriptFile) {
     }
 
 
-
-
     fun invokeMethod(name: String) {
         val method = methodByName(name)
             ?: throw ScriptMethodNotFoundException("The method with the name $name does not exist")
 
 
-        method.execute();
+        method.execute()
     }
 
 
@@ -85,10 +85,21 @@ class ScriptMethod(val name: String, val gebesScript: GebesScript) {
             val command = gebesScript.commandManager.getCommandByName(scriptCommand.name)
                 ?: throw ScriptRuntimeException("The command with the name ${scriptCommand.name} does not exist")
 
-            command.execute(
-                scriptCommand.name, scriptCommand.parameter,
-                scriptCommand.arguments, gebesScript
-            )
+            val result: String?
+
+            try {
+                result = command.execute(
+                    scriptCommand.name, scriptCommand.parameter,
+                    scriptCommand.arguments, gebesScript
+                )
+
+            } catch (e: Exception) {
+                throw ScriptRuntimeException("A ${scriptCommand.name} command has thrown an exception", e)
+            }
+
+            if (result != null)
+                throw ScriptRuntimeException("A ${scriptCommand.name} command has thrown a script runtime exception: $result")
+
 
         }
     }
@@ -109,5 +120,8 @@ class ScriptCommand(val name: String, val parameter: String?) {
 }
 
 class ScriptParseException(name: String) : Exception(name)
-class ScriptRuntimeException(name: String) : Exception(name)
+class ScriptRuntimeException : Exception{
+    constructor(name: String): super(name)
+    constructor(name: String, exception: Exception): super(name, exception)
+}
 class ScriptMethodNotFoundException(name: String) : Exception(name)

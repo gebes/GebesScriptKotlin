@@ -20,6 +20,7 @@ class CommandManager {
         registerCommand(MethodCaller())
         registerCommand(wait())
         registerCommand(clear())
+        registerCommand(SetVariable())
     }
 
 }
@@ -28,6 +29,6 @@ abstract class Command {
 
     abstract fun name(): String
 
-    abstract fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript)
+    abstract fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String?
 
 }

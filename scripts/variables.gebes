@@ -1,0 +1,7 @@
+main
+
+ var name
+  John
+
+ println
+  Hallo %name%!
