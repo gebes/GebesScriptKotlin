@@ -22,6 +22,7 @@ class CommandManager {
         registerCommand(clear())
         registerCommand(SetVariable())
         registerCommand(ScanVariable())
+        registerCommand(If())
     }
 
 }

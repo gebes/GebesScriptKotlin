@@ -1,9 +1,10 @@
 main
-
+ print
+  please enter a name -->
  scan name
 
  var bonus
-  5%
+  51%
 
  println
   Hello %name%! You will get a bonus of %bonus%

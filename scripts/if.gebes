@@ -1,0 +1,28 @@
+main
+ call once
+  choose_option
+
+choose_option
+ println
+  Did you have a nice day?
+   1) Yes
+   2) No
+
+ print
+  Choose an option: 
+
+ scan selectedOption
+
+ if selectedOption
+  equals 1:
+  option_yes
+  equals 2:
+  option_no
+  else:
+  choose_option
+
+option_yes
+ println Nice! :)
+
+option_no
+ println Oh, all the best!

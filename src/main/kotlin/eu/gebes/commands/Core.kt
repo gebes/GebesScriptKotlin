@@ -3,6 +3,7 @@ package eu.gebes.commands
 import eu.gebes.script.GebesScript
 import eu.gebes.script.ScriptRuntimeException
 import java.util.*
+import kotlin.collections.HashMap
 
 /**
  * Prints stuff to the console with some extra animations/features
@@ -26,7 +27,7 @@ class Printer(
 
         var index = 0
 
-        while(index < line.length){
+        while (index < line.length) {
 
             val char = lineChars[index]
 
@@ -40,12 +41,12 @@ class Printer(
                 var current = lineChars[i++]
                 var name = "$current"
 
-                while (lineChars[i] != '%' && i != lineChars.size-1) {
+                while (lineChars[i] != '%' && i != lineChars.size - 1) {
                     current = lineChars[i++]
                     name += current
                 }
 
-                if(i == lineChars.size-1){
+                if (i == lineChars.size - 1) {
                     index++
                     chars.add('%')
                     continue
@@ -54,7 +55,7 @@ class Printer(
                 chars.addAll(gebesScript.variableManager.getVariable(name).toString().toCharArray().toTypedArray())
                 index += i - start + 1
             } else {
-                chars.add(if(char == '\r') '%' else char)
+                chars.add(if (char == '\r') '%' else char)
             }
             index++
         }
@@ -189,6 +190,64 @@ class clear : Command() {
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
         print("\u001b[H\u001b[2J")
         System.out.flush()
+        return null
+    }
+}
+
+class If : Command() {
+    override fun name(): String = "if"
+
+    override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
+
+        parameter ?: return "Parameter is required"
+
+        val value = gebesScript.variableManager.getVariable(parameter)
+
+        val statements = HashMap<String, LinkedList<String>>()
+
+        var last: String? = null
+
+        // map the statements
+        for (i in 0..args.size - 1) {
+            if (args[i].endsWith(":") && (args[i].startsWith("equals ")) || (args[i] == "else:")) {
+                last = args[i]
+                statements.put(last, LinkedList())
+            } else {
+                if (last == null)
+                    continue
+
+                val list = statements[last]
+
+                list!!.add(args[i])
+
+                statements.put(last, list)
+
+            }
+        }
+
+        var hasMatch = false
+
+        for (entry in statements.entries) {
+
+            if (entry.key.startsWith("equals ")) {
+
+
+                val valueToCompare = entry.key.substring("equals ".length, entry.key.length-1)
+
+                if (value.toString() == valueToCompare) {
+                    hasMatch = true
+                    entry.value.forEach { method: String ->
+                        gebesScript.invokeMethod(method)
+                    }
+                }
+
+            } else if (entry.key == "else:" && !hasMatch) {
+                entry.value.forEach { method: String ->
+                    gebesScript.invokeMethod(method)
+                }
+            }
+
+        }
 
         return null
     }
