@@ -32,6 +32,9 @@ fun main(args: Array<String>) {
             if (!args.contains(Parameter.NO_PREFIX.stringValue))
                 println("Executing script $arg")
 
+            if(arg.startsWith("--"))
+                continue;
+
             executeScript(File(arg))
 
         }
