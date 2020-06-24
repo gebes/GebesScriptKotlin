@@ -11,9 +11,6 @@ main
 
  print 1..2..3..
 
- // Entering no parameter resets the printer to default
- printer
-
  printer
   delay 0.05
 
