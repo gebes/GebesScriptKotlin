@@ -241,12 +241,14 @@ class If : Command() {
                     }
                 }
 
-            } else if (entry.key == "else:" && !hasMatch) {
-                entry.value.forEach { method: String ->
-                    gebesScript.invokeMethod(method)
-                }
             }
 
+        }
+
+        if (!hasMatch) {
+            statements.get("else:")?.forEach { method: String ->
+                gebesScript.invokeMethod(method)
+            }
         }
 
         return null

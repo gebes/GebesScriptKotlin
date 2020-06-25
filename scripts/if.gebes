@@ -8,15 +8,18 @@ choose_option
    1) Yes
    2) No
 
- print
-  Choose an option:
+ print Choose an option:
 
  scan selectedOption
 
  if selectedOption
   equals 1:
    option_yes
+  equals yes:
+   option_yes
   equals 2:
+   option_no
+  equals no:
    option_no
   else:
    choose_option
