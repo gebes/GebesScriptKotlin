@@ -23,3 +23,6 @@
  ``` 
 
  If there are no arguments, it will then redirect you to the selection screen.
+ 
+ ## What did I learn?
+ * How to code with Kotlin
