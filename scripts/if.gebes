@@ -9,7 +9,6 @@ choose_option
    2) No
 
  print Choose an option:
-
  scan selectedOption
 
  if selectedOption
@@ -28,4 +27,4 @@ option_yes
  println Nice! :)
 
 option_no
- println Oh, all the best!
+ println Oh, this doesn't sound good
