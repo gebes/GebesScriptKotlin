@@ -49,16 +49,14 @@ class ScriptFileTest {
     fun stripCommentsTest3() {
 
         val input = """
-             // intends
-              # with the
-               // comments
-                # which looks
-                 # really cool
-                  // this should work quite deep
+            // comments will only be accepted with intends
+            # intend means comment will stay
+             # like this
             main
         """.trimIndent()
 
         val exceptedOutput = """
+             # like this
             main
         """.trimIndent()
 
@@ -75,13 +73,14 @@ class ScriptFileTest {
             main
              println
               Hello World // comments will be printed
-              // here not
+              // here also, because those arent comments
         """.trimIndent()
 
         val exceptedOutput = """
             main
              println
               Hello World // comments will be printed
+              // here also, because those arent comments
         """.trimIndent()
 
         val output = CommentStripper.strip(input.split("\n"))

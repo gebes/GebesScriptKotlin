@@ -23,14 +23,12 @@ object CommentStripper{
 
         val newLines = LinkedList<String>()
 
-        for (l in lines) {
+        for (line in lines) {
 
-            val line = l.trimIndent()
-
-            if (line.startsWith("//") or line.startsWith("#") or (line.isEmpty() && l.length < 2))
+            if (line.startsWith("//") or line.startsWith("#") or line.isEmpty())
                 continue
 
-            newLines.add(l)
+            newLines.add(line)
 
         }
         return newLines
