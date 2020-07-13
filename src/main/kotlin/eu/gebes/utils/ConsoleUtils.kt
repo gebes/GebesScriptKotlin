@@ -19,16 +19,16 @@ class TitlePrinter {
     // http://patorjk.com/software/taag/#p=display&f=Big&t=Type%20Something%20
     // Big
     private fun title(): String = """
-   _____      _                _____           _       _          __   ___  
-  / ____|    | |              / ____|         (_)     | |        /_ | |__ \ 
- | |  __  ___| |__   ___  ___| (___   ___ _ __ _ _ __ | |_  __   _| |    ) |
- | | |_ |/ _ \ '_ \ / _ \/ __|\___ \ / __| '__| | '_ \| __| \ \ / / |   / / 
- | |__| |  __/ |_) |  __/\__ \____) | (__| |  | | |_) | |_   \ V /| |_ / /_ 
-  \_____|\___|_.__/ \___||___/_____/ \___|_|  |_| .__/ \__|   \_/ |_(_)____|
+   _____      _                _____           _       _  
+  / ____|    | |              / ____|         (_)     | |  
+ | |  __  ___| |__   ___  ___| (___   ___ _ __ _ _ __ | |_ 
+ | | |_ |/ _ \ '_ \ / _ \/ __|\___ \ / __| '__| | '_ \| __|
+ | |__| |  __/ |_) |  __/\__ \____) | (__| |  | | |_) | |_
+  \_____|\___|_.__/ \___||___/_____/ \___|_|  |_| .__/ \__|
                                                 | |                         
                                                 |_|                         """.trimIndent()
 
-    private fun subtitle(): String = "   this is a preview Version"
+    private fun subtitle(): String = "   ${VersionManager.VERSION}"
 
 
 }
@@ -68,7 +68,7 @@ class FileSelector(private var folder: File) {
             } while (!(selection >= 0 && selection <= files.size))
 
             if (selection != 0)
-                return files.get(selection-1);
+                return files.get(selection - 1);
 
 
         }
