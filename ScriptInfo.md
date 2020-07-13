@@ -24,3 +24,5 @@ Set the value of a variable
 Scan input from the console and set it to a specific variable
 ### if
 Compares values and calls methods if true
+### note
+Side notes which can be printed

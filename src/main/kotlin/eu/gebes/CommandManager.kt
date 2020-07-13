@@ -23,7 +23,8 @@ class CommandManager {
             arrayOf(
                 printerCommand(), print(), println(),
                 MethodCaller(), wait(), clear(),
-                SetVariable(), ScanVariable(), If()
+                SetVariable(), ScanVariable(), If(),
+                Note()
             )
         )
     }

@@ -26,7 +26,7 @@ main
 
  clear
 
- // wait for 2 seconds
+ note wait for 2 seconds
  wait 2
 
  printer

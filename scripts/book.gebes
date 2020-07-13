@@ -5,7 +5,7 @@ main
   =========
   Some interesting stuff
 
- // this waits for the user to make some input
+ note this waits for the user to make some input
  wait for enter
 
  println

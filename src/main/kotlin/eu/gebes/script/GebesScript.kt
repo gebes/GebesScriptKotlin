@@ -29,7 +29,7 @@ class GebesScript(scriptFile: ScriptFile) {
 
             if (intent == 0 && line.isNotEmpty()) {
 
-                val name = stripIntend(line)
+                val name = line.trimIndent()
 
                 if (methodByName(name) != null)
                     throw ScriptParseException("Method with name $name already exists")
@@ -38,7 +38,7 @@ class GebesScript(scriptFile: ScriptFile) {
 
             } else if (intent == 1) {
 
-                val commandName = stripIntend(line)
+                val commandName = line.trimIndent()
 
                 val s = commandName.split(" ".toRegex(), 2)
 
@@ -51,7 +51,7 @@ class GebesScript(scriptFile: ScriptFile) {
 
             } else {
 
-                val argument = stripIntend(line)
+                val argument = line.trimIndent()
 
                 try {
                     methods.last.lastCommand().addArgument(argument)
