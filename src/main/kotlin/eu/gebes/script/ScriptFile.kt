@@ -2,45 +2,39 @@ package eu.gebes.script
 
 import java.io.File
 import java.util.*
-import eu.gebes.utils.*
 
 class ScriptFile {
 
     var lines: List<String>
 
-    constructor(file: File) {
-        this.lines = getLines(file)
-    }
+    constructor(file: File) : this(file.readLines());
 
     constructor(lines: List<String>) {
-        this.lines = stripComments(lines)
+        this.lines = CommentStripper.strip(lines)
     }
 
 }
 
 
-/**
- * Returns all the lines of a file with the comments stripped of
- */
-fun getLines(file: File): List<String> {
-    return stripComments(file.readLines())
-}
 
-fun stripComments(lines: List<String>): List<String> {
 
-    val newLines = LinkedList<String>()
+object CommentStripper{
+    fun strip(lines: List<String>): List<String> {
 
-    for (l in lines) {
+        val newLines = LinkedList<String>()
 
-        val line = stripIntend(l)
+        for (l in lines) {
 
-        if (line.startsWith("//") or line.startsWith("#") or (line.isEmpty() && l.length < 2))
-            continue
+            val line = l.trimIndent()
 
-        newLines.add(l)
+            if (line.startsWith("//") or line.startsWith("#") or (line.isEmpty() && l.length < 2))
+                continue
 
+            newLines.add(l)
+
+        }
+        return newLines
     }
-    return newLines
 }
 
 
