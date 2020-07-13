@@ -2,6 +2,7 @@ package eu.gebes
 
 import eu.gebes.script.GebesScript
 import eu.gebes.script.ScriptFile
+import eu.gebes.utils.CommandInfoCreator
 import eu.gebes.utils.FileSelector
 import eu.gebes.utils.TitlePrinter
 import java.io.File
@@ -15,6 +16,7 @@ import java.util.*
  *  --no-prefix doesnt print the file path before executing it
  */
 fun main(args: Array<String>) {
+
 
     if (args.isEmpty()) {
         val titlePrinter = TitlePrinter()
@@ -51,5 +53,7 @@ private enum class Parameter(val stringValue: String) {
 
 
 private fun executeScript(file: File) {
-    GebesScript(ScriptFile(file)).invokeMethod("main")
+    val gebesScript: GebesScript = GebesScript(ScriptFile(file));
+    CommandInfoCreator(gebesScript.commandManager).generate();
+    gebesScript.invokeMethod("main")
 }

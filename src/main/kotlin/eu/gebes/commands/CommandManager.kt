@@ -9,6 +9,7 @@ class CommandManager {
     private var commands: LinkedList<Command> = LinkedList()
 
     fun registerCommand(command: Command) = commands.add(command)
+    fun registeredCommands() = commands
 
     fun getCommandByName(name: String): Command? =
         commands.stream().filter { t: Command -> t.name() == name}.findFirst().orElse(null)
