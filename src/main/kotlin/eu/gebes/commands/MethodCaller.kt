@@ -8,7 +8,7 @@ class MethodCaller : Command() {
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 
-        var count = 0;
+        var count = 0
 
         if (parameter == null || parameter == "and repeat once" || parameter == "once") {
             count = 1
@@ -16,7 +16,7 @@ class MethodCaller : Command() {
             count = -1
         } else {
 
-            var param = parameter;
+            var param = parameter
 
             if(param.startsWith("and repeat "))
                 param = param.substring("and repeat ".length, param.length)

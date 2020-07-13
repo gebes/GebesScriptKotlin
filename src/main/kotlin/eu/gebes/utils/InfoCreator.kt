@@ -6,7 +6,7 @@ import java.io.File
 class InfoCreator(val commandManager: CommandManager) {
 
     fun generate() {
-        Thread(this::_generate, "Async Info Generator").start();
+        Thread(this::_generate, "Async Info Generator").start()
     }
 
     fun _generate() {
@@ -24,7 +24,7 @@ class InfoCreator(val commandManager: CommandManager) {
         """.trimIndent()
 
         for (command in commandManager.registeredCommands()) {
-            content += "### ${command.name()}\n";
+            content += "### ${command.name()}\n"
             // TODO adding examples
         }
 

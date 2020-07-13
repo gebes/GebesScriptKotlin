@@ -19,10 +19,10 @@ class Printer(
     fun print(l: String) {
         var line = l.replace("%%", "\r")
         if (wait_symbol != null)
-            line = l.replace(wait_symbol.toRegex(), "\t");
+            line = l.replace(wait_symbol.toRegex(), "\t")
 
 
-        val lineChars = line.toCharArray();
+        val lineChars = line.toCharArray()
         var chars = LinkedList<Char>().toMutableList()
 
         var index = 0
@@ -97,7 +97,7 @@ class printerCommand : Command() {
                 val param = arg.substring("delay ".length, arg.length)
 
                 delay = param.toFloatOrNull()
-                    ?: return ("Invalid float parameter for delay: $param");
+                    ?: return ("Invalid float parameter for delay: $param")
 
             } else if (arg.startsWith("wait_symbol ")) {
                 val param = arg.substring("wait_symbol ".length, arg.length)
@@ -111,7 +111,7 @@ class printerCommand : Command() {
                 val param = arg.substring("wait_factor ".length, arg.length)
 
                 wait_factor = param.toFloatOrNull()
-                    ?: return ("Invalid float parameter for wait_factor: $param");
+                    ?: return ("Invalid float parameter for wait_factor: $param")
 
             } else {
                 return ("Illegal argument for printer: $arg")
@@ -174,7 +174,7 @@ class wait : Command() {
             readLine()
         } else {
             val time = parameter?.toFloatOrNull()
-                ?: return ("Invalid float parameter for wait: $parameter");
+                ?: return ("Invalid float parameter for wait: $parameter")
 
             Thread.sleep((time * 1000).toLong())
         }
@@ -208,7 +208,7 @@ class If : Command() {
         var last: String? = null
 
         // map the statements
-        for (i in 0..args.size - 1) {
+        for (i in args.indices) {
             if (args[i].endsWith(":") && (args[i].startsWith("equals ")) || (args[i] == "else:")) {
                 last = args[i]
                 statements.put(last, LinkedList())
@@ -246,7 +246,7 @@ class If : Command() {
         }
 
         if (!hasMatch) {
-            statements.get("else:")?.forEach { method: String ->
+            statements["else:"]?.forEach { method: String ->
                 gebesScript.invokeMethod(method)
             }
         }

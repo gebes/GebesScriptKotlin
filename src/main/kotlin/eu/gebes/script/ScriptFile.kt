@@ -9,11 +9,11 @@ class ScriptFile {
     var lines: List<String>
 
     constructor(file: File) {
-        this.lines = getLines(file);
+        this.lines = getLines(file)
     }
 
     constructor(lines: List<String>) {
-        this.lines = stripComments(lines);
+        this.lines = stripComments(lines)
     }
 
 }
@@ -35,12 +35,12 @@ fun stripComments(lines: List<String>): List<String> {
         val line = stripIntend(l)
 
         if (line.startsWith("//") or line.startsWith("#") or (line.isEmpty() && l.length < 2))
-            continue;
+            continue
 
-        newLines.add(l);
+        newLines.add(l)
 
     }
-    return newLines;
+    return newLines
 }
 
 

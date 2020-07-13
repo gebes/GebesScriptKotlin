@@ -31,7 +31,7 @@ fun main(args: Array<String>) {
 
 
             if (arg.startsWith("--"))
-                continue;
+                continue
 
             if (!args.contains(Parameter.NO_PREFIX.stringValue))
                 println("Executing script $arg")
@@ -51,7 +51,7 @@ private enum class Parameter(val stringValue: String) {
 
 
 private fun executeScript(file: File) {
-    val gebesScript: GebesScript = GebesScript(ScriptFile(file));
-    InfoCreator(gebesScript.commandManager).generate();
+    val gebesScript: GebesScript = GebesScript(ScriptFile(file))
+    InfoCreator(gebesScript.commandManager).generate()
     gebesScript.invokeMethod("main")
 }

@@ -18,7 +18,7 @@ class GebesScript(scriptFile: ScriptFile) {
 
 
     fun methodByName(name: String): ScriptMethod? =
-        methods.stream().filter { t: ScriptMethod -> t.name == name }.findFirst().orElse(null);
+        methods.stream().filter { t: ScriptMethod -> t.name == name }.findFirst().orElse(null)
 
     init {
 
@@ -29,7 +29,7 @@ class GebesScript(scriptFile: ScriptFile) {
 
             if (intent == 0 && line.isNotEmpty()) {
 
-                val name = stripIntend(line);
+                val name = stripIntend(line)
 
                 if (methodByName(name) != null)
                     throw ScriptParseException("Method with name $name already exists")
