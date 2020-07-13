@@ -41,7 +41,7 @@ class VariableManager {
     }
 
     fun getVariable(name: String): Any? =
-        variables.get(name) ?: throw ScriptRuntimeException("Variable with the name $name does not exist")
+        variables.get(name)
 
     fun deleteVariable(name: String) = variables.remove(name)
 

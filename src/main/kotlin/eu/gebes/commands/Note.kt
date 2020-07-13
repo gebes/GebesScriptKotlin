@@ -11,6 +11,16 @@ class Note : Command() {
     """.trimIndent()
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
+
+        if (gebesScript.variableManager.getVariable("gs.note.print") == true) {
+            if (parameter != null) {
+                gebesScript.printer.println(parameter)
+            }
+            args.forEach { line: String ->
+                gebesScript.printer.println(line)
+            }
+        }
+
         return null
     }
 }
