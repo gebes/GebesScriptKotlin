@@ -2,12 +2,10 @@ package eu.gebes
 
 import eu.gebes.script.GebesScript
 import eu.gebes.script.ScriptFile
-import eu.gebes.utils.CommandInfoCreator
+import eu.gebes.utils.InfoCreator
 import eu.gebes.utils.FileSelector
 import eu.gebes.utils.TitlePrinter
 import java.io.File
-import java.lang.IllegalArgumentException
-import java.util.*
 
 /**
  * @param args
@@ -54,6 +52,6 @@ private enum class Parameter(val stringValue: String) {
 
 private fun executeScript(file: File) {
     val gebesScript: GebesScript = GebesScript(ScriptFile(file));
-    CommandInfoCreator(gebesScript.commandManager).generate();
+    InfoCreator(gebesScript.commandManager).generate();
     gebesScript.invokeMethod("main")
 }
