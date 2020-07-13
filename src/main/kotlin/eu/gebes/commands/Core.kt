@@ -1,5 +1,6 @@
 package eu.gebes.commands
 
+import eu.gebes.Command
 import eu.gebes.script.GebesScript
 import eu.gebes.script.ScriptRuntimeException
 import java.util.*
@@ -82,6 +83,9 @@ class Printer(
 class printerCommand : Command() {
     override fun name(): String = "printer"
 
+    override fun description() = "Modifies how and how fast something gets printed to the console"
+
+
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 
         if (parameter != null)
@@ -129,6 +133,10 @@ class printerCommand : Command() {
 class print : Command() {
     override fun name(): String = "print"
 
+    override fun description() = """
+        Prints the parameter and arguments to the console as you parsed them
+    """.trimIndent()
+
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 
         if (parameter != null)
@@ -150,6 +158,10 @@ class print : Command() {
 class println : Command() {
     override fun name(): String = "println"
 
+    override fun description() = """
+        Prints the parameter and arguments to the console with an linebreak at the end
+    """.trimIndent()
+
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
         if (parameter != null)
             gebesScript.printer.println(parameter)
@@ -167,6 +179,10 @@ class println : Command() {
 
 class wait : Command() {
     override fun name(): String = "wait"
+
+    override fun description() = """
+        Waits for n seconds
+    """.trimIndent()
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 
@@ -187,6 +203,10 @@ class wait : Command() {
 class clear : Command() {
     override fun name(): String = "clear"
 
+    override fun description() = """
+        Clears the console screen
+    """.trimIndent()
+
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
         print("\u001b[H\u001b[2J")
         System.out.flush()
@@ -196,6 +216,10 @@ class clear : Command() {
 
 class If : Command() {
     override fun name(): String = "if"
+
+    override fun description() = """
+        Compares values and calls methods if true
+    """.trimIndent()
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 

@@ -1,10 +1,14 @@
 package eu.gebes.commands
 
+import eu.gebes.Command
 import eu.gebes.script.GebesScript
-import eu.gebes.script.ScriptRuntimeException
 
 class MethodCaller : Command() {
     override fun name(): String = "call"
+
+    override fun description() = """
+        Call multiple functions once or multiple times
+    """.trimIndent()
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 

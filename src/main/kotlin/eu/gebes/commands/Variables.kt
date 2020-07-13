@@ -1,5 +1,6 @@
 package eu.gebes.commands
 
+import eu.gebes.Command
 import eu.gebes.script.GebesScript
 import eu.gebes.script.ScriptRuntimeException
 
@@ -50,6 +51,10 @@ class VariableManager {
 class SetVariable : Command() {
     override fun name(): String = "var"
 
+    override fun description() = """
+        Set the value of a variable
+    """.trimIndent()
+
     /**
      * @param parameter is the name
      * @param args if there are more than one elements, then a mutable list will be created
@@ -78,6 +83,10 @@ class SetVariable : Command() {
 
 class ScanVariable : Command(){
     override fun name(): String = "scan"
+
+    override fun description() = """
+        Scan input from the console and set it to a specific variable
+    """.trimIndent()
 
     /**
      * @param parameter is the name

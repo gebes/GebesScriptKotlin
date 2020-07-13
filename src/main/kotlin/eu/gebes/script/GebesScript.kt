@@ -1,6 +1,6 @@
 package eu.gebes.script
 
-import eu.gebes.commands.CommandManager
+import eu.gebes.CommandManager
 import eu.gebes.commands.Printer
 import eu.gebes.commands.VariableManager
 import java.util.*

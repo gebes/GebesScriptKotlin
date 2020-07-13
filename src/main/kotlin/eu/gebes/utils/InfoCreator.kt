@@ -1,6 +1,6 @@
 package eu.gebes.utils
 
-import eu.gebes.commands.CommandManager
+import eu.gebes.CommandManager
 import java.io.File
 
 class InfoCreator(val commandManager: CommandManager) {
@@ -24,7 +24,11 @@ class InfoCreator(val commandManager: CommandManager) {
         """.trimIndent()
 
         for (command in commandManager.registeredCommands()) {
-            content += "### ${command.name()}\n"
+            content += """
+                ### ${command.name()}
+                ${command.description()}
+                
+            """.trimIndent()
             // TODO adding examples
         }
 
