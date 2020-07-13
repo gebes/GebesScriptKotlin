@@ -51,7 +51,7 @@ private enum class Parameter(val stringValue: String) {
 
 
 private fun executeScript(file: File) {
-    val gebesScript: GebesScript = GebesScript(ScriptFile(file))
+    val gebesScript = GebesScript(ScriptFile(file))
     InfoCreator(gebesScript.commandManager).generate()
     gebesScript.invokeMethod("main")
 }

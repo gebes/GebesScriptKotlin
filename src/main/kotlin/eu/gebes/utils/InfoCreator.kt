@@ -9,7 +9,7 @@ class InfoCreator(val commandManager: CommandManager) {
         Thread(this::_generate, "Async Info Generator").start()
     }
 
-    fun _generate() {
+    private fun _generate() {
 
         var content = """
             # ScriptInfo
