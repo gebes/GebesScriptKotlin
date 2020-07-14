@@ -29,7 +29,20 @@ class InfoCreator(val commandManager: CommandManager) {
                 ${command.description}
                 
             """.trimIndent()
-            // TODO adding examples
+
+            var count = 1
+            command.examples.forEach { example: String ->
+                content += """
+#### Example $count  
+
+```  
+$example
+```
+
+                """.trimIndent()
+                count++
+            }
+
         }
 
         val file = File("ScriptInfo.md")

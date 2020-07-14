@@ -149,6 +149,21 @@ class print : Command() {
         Prints the parameter and arguments to the console as you parsed them
     """.trimIndent()
 
+    override val examples = arrayOf(
+        """
+        main
+         print Hello World
+    """.trimIndent(), """
+        main
+         print
+          Hello World
+    """.trimIndent(),"""
+        main
+         print Title
+          Description
+    """.trimIndent()
+    )
+
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 
         if (parameter != null)

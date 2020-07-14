@@ -35,6 +35,7 @@ abstract class Command {
 
     abstract val name: String
     abstract val description: String
+    open val examples: Array<String> = emptyArray()
 
     abstract fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String?
 

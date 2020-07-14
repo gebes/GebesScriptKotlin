@@ -10,6 +10,26 @@ Here you will find a helpful overview of all commands you can use
 Modifies how and how fast something gets printed to the console
 ### print
 Prints the parameter and arguments to the console as you parsed them
+#### Example 1  
+
+```  
+main
+ print Hello World
+```
+#### Example 2  
+
+```  
+main
+ print
+  Hello World
+```
+#### Example 3  
+
+```  
+main
+ print Title
+  Description
+```
 ### println
 Prints the parameter and arguments to the console with an linebreak at the end
 ### call

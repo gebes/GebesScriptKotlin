@@ -51,9 +51,9 @@ class VariableManager {
 }
 
 class SetVariable : Command() {
-    override fun name(): String = "var"
+    override val name: String = "var"
 
-    override fun description() = """
+    override val description = """
         Set the value of a variable
     """.trimIndent()
 
@@ -89,9 +89,9 @@ class SetVariable : Command() {
 }
 
 class ScanVariable : Command() {
-    override fun name(): String = "scan"
+    override val name: String = "scan"
 
-    override fun description() = """
+    override val description = """
         Scan input from the console and set it to a specific variable
     """.trimIndent()
 
