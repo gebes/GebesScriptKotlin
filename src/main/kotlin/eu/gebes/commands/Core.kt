@@ -52,7 +52,12 @@ class Printer(
                     chars.add('%')
                     continue
                 }
-                chars.addAll(gebesScript.variableManager.getVariableString(name).toCharArray().toTypedArray())
+
+                if (name.endsWith("?")
+                    && gebesScript.variableManager.getVariable(name.substring(0, name.length-1)) is List<*>) {
+                    chars.addAll((gebesScript.variableManager.getVariable(name.substring(0, name.length-1)) as List<*>).random().toString().toCharArray().toTypedArray())
+                } else
+                    chars.addAll(gebesScript.variableManager.getVariableString(name).toCharArray().toTypedArray())
                 index += i - start + 1
             } else {
                 chars.add(if (char == '\r') '%' else char)

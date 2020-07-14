@@ -4,7 +4,9 @@ main
  scan name
 
  var bonus
-  51%
+  20%
+  40%
+  60%
 
  println
-  Hello %name%! You will get a bonus of %bonus%
+  Hello %name%! You will get a bonus of %bonus?%
