@@ -11,14 +11,17 @@ class TitlePrinter {
 
     fun print() {
         println()
-        println(title())
-        println(subtitle())
+        println(Title.title)
+        println(Title.subtitle)
         println()
     }
 
+}
+
+object Title{
     // http://patorjk.com/software/taag/#p=display&f=Big&t=Type%20Something%20
     // Big
-    private fun title(): String = """
+    val title: String = """
    _____      _                _____           _       _  
   / ____|    | |              / ____|         (_)     | |  
  | |  __  ___| |__   ___  ___| (___   ___ _ __ _ _ __ | |_ 
@@ -28,13 +31,11 @@ class TitlePrinter {
                                                 | |                         
                                                 |_|                         """.trimIndent()
 
-    private fun subtitle(): String = """
+    val subtitle: String = """
         Running version ${VersionManager.VERSION}
         This is a stable release
         Syntax may change!
     """
-
-
 }
 
 
