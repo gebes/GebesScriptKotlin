@@ -29,10 +29,10 @@ class TitlePrinter {
                                                 |_|                         """.trimIndent()
 
     private fun subtitle(): String = """
-        Running version         ${VersionManager.VERSION}
+        Running version ${VersionManager.VERSION}
         This is a stable release
         Syntax may change!
-    """.trimIndent()
+    """
 
 
 }
