@@ -11,12 +11,12 @@ class CommandManager {
 
     fun registerCommand(commandToAdd: Command) = commands.add(commandToAdd)
     fun registerCommands(commandsToAdd: Array<Command>) =
-        commandsToAdd.forEach { commandToAdd -> commands.add(commandToAdd) }
+        commandsToAdd.forEach { commandToAdd -> registerCommand(commandToAdd) }
 
     fun registeredCommands() = commands
 
     fun getCommandByName(name: String): Command? =
-        commands.stream().filter { t: Command -> t.name() == name }.findFirst().orElse(null)
+        commands.stream().filter { t: Command -> t.name == name }.findFirst().orElse(null)
 
     init {
         registerCommands(
@@ -33,10 +33,9 @@ class CommandManager {
 
 abstract class Command {
 
-    abstract fun name(): String
-    abstract fun description(): String
+    abstract val name: String
+    abstract val description: String
 
     abstract fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String?
-
 
 }

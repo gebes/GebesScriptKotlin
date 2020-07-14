@@ -4,9 +4,9 @@ import eu.gebes.Command
 import eu.gebes.script.GebesScript
 
 class Note : Command() {
-    override fun name(): String = "note"
+    override val name: String = "note"
 
-    override fun description() = """
+    override val description = """
         Side notes which can be printed
     """.trimIndent()
 

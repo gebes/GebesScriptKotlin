@@ -25,8 +25,8 @@ class InfoCreator(val commandManager: CommandManager) {
 
         for (command in commandManager.registeredCommands()) {
             content += """
-                ### ${command.name()}
-                ${command.description()}
+                ### ${command.name}
+                ${command.description}
                 
             """.trimIndent()
             // TODO adding examples

@@ -4,9 +4,9 @@ import eu.gebes.Command
 import eu.gebes.script.GebesScript
 
 class MethodCaller : Command() {
-    override fun name(): String = "call"
+    override val name: String = "call"
 
-    override fun description() = """
+    override val description = """
         Call multiple functions once or multiple times
     """.trimIndent()
 

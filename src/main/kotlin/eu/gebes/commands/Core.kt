@@ -54,8 +54,16 @@ class Printer(
                 }
 
                 if (name.endsWith("?")
-                    && gebesScript.variableManager.getVariable(name.substring(0, name.length-1)) is List<*>) {
-                    chars.addAll((gebesScript.variableManager.getVariable(name.substring(0, name.length-1)) as List<*>).random().toString().toCharArray().toTypedArray())
+                    && gebesScript.variableManager.getVariable(name.substring(0, name.length - 1)) is List<*>
+                ) {
+                    chars.addAll(
+                        (gebesScript.variableManager.getVariable(
+                            name.substring(
+                                0,
+                                name.length - 1
+                            )
+                        ) as List<*>).random().toString().toCharArray().toTypedArray()
+                    )
                 } else
                     chars.addAll(gebesScript.variableManager.getVariableString(name).toCharArray().toTypedArray())
                 index += i - start + 1
@@ -85,9 +93,9 @@ class Printer(
 }
 
 class printerCommand : Command() {
-    override fun name(): String = "printer"
+    override val name: String = "printer"
 
-    override fun description() = "Modifies how and how fast something gets printed to the console"
+    override val description: String = "Modifies how and how fast something gets printed to the console"
 
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
@@ -135,9 +143,9 @@ class printerCommand : Command() {
 }
 
 class print : Command() {
-    override fun name(): String = "print"
+    override val name: String = "print"
 
-    override fun description() = """
+    override val description = """
         Prints the parameter and arguments to the console as you parsed them
     """.trimIndent()
 
@@ -160,9 +168,9 @@ class print : Command() {
 }
 
 class println : Command() {
-    override fun name(): String = "println"
+    override val name: String = "println"
 
-    override fun description() = """
+    override val description = """
         Prints the parameter and arguments to the console with an linebreak at the end
     """.trimIndent()
 
@@ -182,9 +190,9 @@ class println : Command() {
 }
 
 class wait : Command() {
-    override fun name(): String = "wait"
+    override val name: String = "wait"
 
-    override fun description() = """
+    override val description = """
         Waits for n seconds
     """.trimIndent()
 
@@ -205,9 +213,9 @@ class wait : Command() {
 }
 
 class clear : Command() {
-    override fun name(): String = "clear"
+    override val name: String = "clear"
 
-    override fun description() = """
+    override val description = """
         Clears the console screen
     """.trimIndent()
 
@@ -219,9 +227,9 @@ class clear : Command() {
 }
 
 class If : Command() {
-    override fun name(): String = "if"
+    override val name: String = "if"
 
-    override fun description() = """
+    override val description = """
         Compares values and calls methods if true
     """.trimIndent()
 
