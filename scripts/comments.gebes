@@ -1,6 +1,6 @@
 # Comments look like this
 // or this
-# but you have to be carefull, if there is something before the # or // then
+# but you have to be careful, if there is something before the # or // then
 # the note wont be removed, but if you want to have inline notes,
 # then there is the note command, which provides some useful debugging tool
 
