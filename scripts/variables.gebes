@@ -9,4 +9,6 @@ main
   60%
 
  println
-  Hello %name%! You will get a bonus of %bonus?%
+  Hello %name%!
+  There are %bonus% bonuses available for you!
+  And you'll get %bonus?%
