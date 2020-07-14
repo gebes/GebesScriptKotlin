@@ -10,6 +10,54 @@ class MethodCaller : Command() {
         Call multiple functions once or multiple times
     """.trimIndent()
 
+    override val examples = arrayOf(
+        """
+        func
+         println
+          Func called
+        
+        # prints "Func called" once
+        main
+         call once
+          func
+    """.trimIndent(), """
+        func
+         println
+          Func called
+        
+        # prints "Func called" once
+        main
+         call and repeat once
+          func
+    """.trimIndent(),"""
+        func
+         println
+          Func called
+        
+        # prints "Func called" forever
+        main
+         call forever
+          func
+    """.trimIndent(),"""
+        func
+         println
+          Func called
+        
+        # prints "Func called" forever
+        main
+         call and repeat forever
+          func
+    """.trimIndent(),"""
+        func
+         println
+          Func called
+        
+        # prints "Func called" 3 times
+        main
+         call 3 times
+          func
+    """.trimIndent())
+
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 
         var count = 0

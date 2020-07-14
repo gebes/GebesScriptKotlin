@@ -151,13 +151,20 @@ class print : Command() {
 
     override val examples = arrayOf(
         """
+        # Prints:
+        # Hello World
         main
          print Hello World
     """.trimIndent(), """
+        # Prints:
+        # Hello World
         main
          print
           Hello World
     """.trimIndent(),"""
+        # Prints:
+        # Title
+        # Description
         main
          print Title
           Description
@@ -186,8 +193,32 @@ class println : Command() {
     override val name: String = "println"
 
     override val description = """
-        Prints the parameter and arguments to the console with an linebreak at the end
+        Prints the parameter and arguments to the console with an extra linebreak at the end
     """.trimIndent()
+
+    override val examples = arrayOf(
+        """
+        # Prints:
+        # Hello World
+        #
+        main
+         println Hello World
+    """.trimIndent(), """
+        # Prints:
+        # Hello World
+        #
+        main
+         print
+          Hello World
+    """.trimIndent(),"""
+        # Prints:
+        # Title
+        # Description
+        #
+        main
+         print Title
+          Description
+    """.trimIndent())
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
         if (parameter != null)
@@ -211,6 +242,21 @@ class wait : Command() {
         Waits for n seconds
     """.trimIndent()
 
+    override val examples = arrayOf(
+        """
+        main
+         wait for enter
+         println Waited for user input
+    """.trimIndent(), """
+        main
+         wait 0.5
+         println Waited for half a second
+    """.trimIndent(),"""
+        main
+         wait 1
+         println Waited for a second
+    """.trimIndent())
+
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 
         if (parameter == "for enter") {
@@ -233,6 +279,15 @@ class clear : Command() {
     override val description = """
         Clears the console screen
     """.trimIndent()
+
+    override val examples = arrayOf(
+        """
+        main
+         println Message you wont be able to read
+         clear
+         note This clears the first message instantly
+         println Message you will be able to read
+    """.trimIndent())
 
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
         print("\u001b[H\u001b[2J")
