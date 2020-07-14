@@ -4,11 +4,11 @@ import eu.gebes.Command
 import eu.gebes.script.GebesScript
 import eu.gebes.script.ScriptRuntimeException
 
-fun valueFromString(value: String?): Any {
+fun valueFromString(value: String?): Any? {
 
     return when {
         value == null -> {
-            "null"
+            null
         }
         value.toIntOrNull() != null -> {
             value.toInt()
@@ -34,9 +34,9 @@ fun validateVariableName(value: String) {
 
 class VariableManager {
 
-    private var variables = HashMap<String, Any>()
+    private var variables = HashMap<String, Any?>()
 
-    fun setVariable(name: String, value: Any) {
+    fun setVariable(name: String, value: Any?) {
         variables[name] = value
     }
 
@@ -67,7 +67,7 @@ class SetVariable : Command() {
 
         if (args.isEmpty()) return "A value is required in form of arguments"
 
-        val value: Any = if (args.size == 1) {
+        val value = if (args.size == 1) {
             valueFromString(args.first())
         } else {
             listOf(args.forEach { arg: String -> valueFromString(arg) }).toMutableList()
