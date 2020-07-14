@@ -52,8 +52,7 @@ class Printer(
                     chars.add('%')
                     continue
                 }
-
-                chars.addAll(gebesScript.variableManager.getVariable(name).toString().toCharArray().toTypedArray())
+                chars.addAll(gebesScript.variableManager.getVariableString(name).toCharArray().toTypedArray())
                 index += i - start + 1
             } else {
                 chars.add(if (char == '\r') '%' else char)

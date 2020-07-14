@@ -13,7 +13,7 @@ fun valueFromString(value: String?): Any? {
         value.toIntOrNull() != null -> {
             value.toInt()
         }
-        value.toFloatOrNull() != null ->{
+        value.toFloatOrNull() != null -> {
             value.toFloat()
         }
         value.equals("true", ignoreCase = true) or value.equals("false", ignoreCase = true) -> {
@@ -27,7 +27,7 @@ fun valueFromString(value: String?): Any? {
 }
 
 fun validateVariableName(value: String) {
-    if(value.contains(" "))
+    if (value.contains(" "))
         throw ScriptRuntimeException("No spaces are allowed in variable nanmes")
 }
 
@@ -42,6 +42,8 @@ class VariableManager {
 
     fun getVariable(name: String): Any? =
         variables.get(name)
+
+    fun getVariableString(name: String): String = getVariable(name).toString()
 
     fun deleteVariable(name: String) = variables.remove(name)
 
@@ -67,10 +69,15 @@ class SetVariable : Command() {
 
         if (args.isEmpty()) return "A value is required in form of arguments"
 
-        val value = if (args.size == 1) {
-            valueFromString(args.first())
+        var value: Any?
+
+        if (args.size == 1) {
+            value = valueFromString(args.first())
         } else {
-            listOf(args.forEach { arg: String -> valueFromString(arg) }).toMutableList()
+            value = mutableListOf<Any?>()
+            args.forEach { arg: String ->
+                value.add(valueFromString(arg))
+            }
         }
 
         gebesScript.variableManager.setVariable(parameter, value)
@@ -81,7 +88,7 @@ class SetVariable : Command() {
 
 }
 
-class ScanVariable : Command(){
+class ScanVariable : Command() {
     override fun name(): String = "scan"
 
     override fun description() = """
@@ -95,11 +102,10 @@ class ScanVariable : Command(){
     override fun execute(label: String, parameter: String?, args: List<String>, gebesScript: GebesScript): String? {
 
 
-            if(parameter == null)
-                return "Parameter is required"
+        if (parameter == null)
+            return "Parameter is required"
 
-            gebesScript.variableManager.setVariable(parameter, valueFromString(readLine()))
-
+        gebesScript.variableManager.setVariable(parameter, valueFromString(readLine()))
 
         return null
     }
