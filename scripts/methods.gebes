@@ -8,10 +8,10 @@ main
   print_stuff
 
  println
- 
+
  call 5 times
   print_stuff
 
 print_stuff
  println
-  Stuff 
+  Stuff
