@@ -48,7 +48,7 @@ class FileSelector(private var folder: File) {
     fun selectFile(): File {
         println("Select a .gebes file to execute")
 
-        return makeSelection(folder);
+        return makeSelection(folder)
 
 
     }
@@ -56,20 +56,29 @@ class FileSelector(private var folder: File) {
     private fun makeSelection(folder: File): File {
         val files = Arrays.stream(folder.listFiles()).filter { file: File -> file.name.endsWith(".gebes") || file.isDirectory }.toList().toMutableList()
 
-        // files.add(0, File())
+        files.add(0, folder)
+        if (folder.parentFile != null)
+            files.add(1, folder.parentFile)
 
-        println("Contents of " + folder.name)
+        println()
+        println("Contents of " + folder.path)
         for ((i, file) in files.sortedByDescending { file -> file.isDirectory }.withIndex()) {
+            var nameToPrint: String
+            if (file.absolutePath == folder.absolutePath)
+                nameToPrint = "📁."
+            else if (folder.parent != null && file.absolutePath == folder.parent)
+                nameToPrint = "📁.."
+            else
+                nameToPrint = if (file.isDirectory) "📁${file.name}" else "📄" + file.name
 
-            println(" ${String.format("%${files.size.toString().length}d", i)}) " + if (file.isDirectory) "./${file.name}/" else file.name)
-
+            println(" ${String.format("%${files.size.toString().length}d", i)}) " + nameToPrint)
         }
 
         var selection: Int
         do {
             print("Select a option: ")
             selection = readLine()!!.toInt()
-        } while (!(selection >= 0 && selection <= files.size))
+        } while (!(selection >= 0 && selection < files.size))
 
         return if (files[selection].isDirectory)
             makeSelection(files[selection])

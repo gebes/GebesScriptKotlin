@@ -20,7 +20,7 @@ fun main(args: Array<String>) {
         val titlePrinter = TitlePrinter()
         titlePrinter.print()
 
-        val fileSelector = FileSelector(File("."))
+        val fileSelector = FileSelector(File(System.getProperty("user.dir")))
 
         executeScript(fileSelector.selectFile())
 
