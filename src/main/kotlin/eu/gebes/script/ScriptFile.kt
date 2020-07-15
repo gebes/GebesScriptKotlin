@@ -7,7 +7,7 @@ class ScriptFile {
 
     var lines: List<String>
 
-    constructor(file: File) : this(file.readLines());
+    constructor(file: File) : this(file.readLines())
 
     constructor(lines: List<String>) {
         this.lines = CommentStripper.strip(lines)
