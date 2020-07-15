@@ -1,6 +1,7 @@
 package eu.gebes.utils
 
 import java.io.File
+import java.nio.file.Files
 import java.util.*
 import kotlin.streams.toList
 
@@ -18,7 +19,7 @@ class TitlePrinter {
 
 }
 
-object Title{
+object Title {
     // http://patorjk.com/software/taag/#p=display&f=Big&t=Type%20Something%20
     // Big
     val title: String = """
@@ -45,41 +46,63 @@ object Title{
 class FileSelector(private var folder: File) {
 
     fun selectFile(): File {
+        println("Select a .gebes file to execute")
 
-        while (true) {
-
-            if (folder.mkdir())
-                println("Note: There was no ./scripts folder, so I created one.")
-
-            val files = Arrays.stream(folder.listFiles()).filter { file: File -> file.name.endsWith(".gebes") }.toList()
-            while (files.isEmpty()) {
-                println("The folder ${folder.name} has no .gebes files. Press enter to refresh")
-                readLine()
-            }
-
-
-            println("Content of ./scripts")
-            println(" 0) Refresh this list")
-            for ((index, file: File) in files.withIndex()) {
-                println(" ${index + 1}) ${file.name}")
-            }
-            println()
-
-            var selection: Int
-
-            do {
-                println("Select a file: ")
-                selection = readLine()!!.toInt()
-            } while (!(selection >= 0 && selection <= files.size))
-
-            if (selection != 0)
-                return files[selection - 1]
-
-
-        }
+        return makeSelection(folder);
 
 
     }
 
+    private fun makeSelection(folder: File): File {
+        val files = Arrays.stream(folder.listFiles()).filter { file: File -> file.name.endsWith(".gebes") || file.isDirectory }.toList().toMutableList()
 
+        // files.add(0, File())
+
+        println("Contents of " + folder.name)
+        for ((i, file) in files.sortedByDescending { file -> file.isDirectory }.withIndex()) {
+
+            println(" ${String.format("%${files.size.toString().length}d", i)}) " + if (file.isDirectory) "./${file.name}/" else file.name)
+
+        }
+
+        var selection: Int
+        do {
+            print("Select a option: ")
+            selection = readLine()!!.toInt()
+        } while (!(selection >= 0 && selection <= files.size))
+
+        return if (files[selection].isDirectory)
+            makeSelection(files[selection])
+        else files[selection]
+    }
+
+
+    /**
+     *       if (folder.mkdir())
+    println("Note: There was no ./scripts folder, so I created one.")
+
+    val files = Arrays.stream(folder.listFiles()).filter { file: File -> file.name.endsWith(".gebes") }.toList()
+    while (files.isEmpty()) {
+    println("The folder ${folder.name} has no .gebes files. Press enter to refresh")
+    readLine()
+    }
+
+
+    println("Actions for ./scripts")
+    for ((index, file: File) in files.withIndex()) {
+    println(" ${index + 1}) ${file.name}")
+    }
+    println()
+
+    var selection: Int
+
+    do {
+    println("Select a file: ")
+    selection = readLine()!!.toInt()
+    } while (!(selection >= 0 && selection <= files.size))
+
+    if (selection != 0)
+    return files[selection - 1]
+
+     */
 }
