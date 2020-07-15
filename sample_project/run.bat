@@ -1,5 +1,5 @@
 @echo off
 
-java -jar GebesScript-1.2.jar
+java -jar GebesScript-1.3.jar
 
 pause
