@@ -84,7 +84,22 @@ class FileSelector(private var folder: File) {
             makeSelection(files[selection])
         else files[selection]
     }
+    /**
+     *
+        private fun hasScriptFile(folder: File?): Boolean {
+        if (folder != null && folder.isDirectory && folder.listFiles() != null)
+        for (file in folder.listFiles()!!) {
 
+        if (file.isDirectory) {
+        if (hasScriptFile(file))
+        return true
+        } else if (file.name.endsWith(".gebes"))
+        return true
+
+        }
+        return false
+        }
+     */
 
     /**
      *       if (folder.mkdir())
