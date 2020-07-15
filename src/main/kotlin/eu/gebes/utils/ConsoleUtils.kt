@@ -65,7 +65,7 @@ class FileSelector(private var folder: File) {
             }
             println()
 
-            var selection = 0
+            var selection: Int
 
             do {
                 println("Select a file: ")
@@ -73,7 +73,7 @@ class FileSelector(private var folder: File) {
             } while (!(selection >= 0 && selection <= files.size))
 
             if (selection != 0)
-                return files.get(selection - 1)
+                return files[selection - 1]
 
 
         }
