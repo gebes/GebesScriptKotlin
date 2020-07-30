@@ -1,6 +1,8 @@
 # GebesScript
  Simple Script Language with Kotlin as Interpreter
  
+ Current version: 1.3
+ 
  ## HelloWorld Example
  There a tons of examples in the ./scripts/ folder too
  ```
