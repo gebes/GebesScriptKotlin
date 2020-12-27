@@ -1,10 +1,8 @@
 # GebesScript
  Simple Script Language with Kotlin as Interpreter
  
- Current version: 1.3
- 
  ## HelloWorld Example
- There a tons of examples in the ./scripts/ folder too
+ There a tons of examples in the ./scripts/ folder you can look at. Here a basic one
  ```
  main
   println
@@ -27,4 +25,5 @@
  If there are no arguments, it will then redirect you to the selection screen.
  
  ## What did I learn?
- * How to code with Kotlin
+ * Kotlin
+ * How to write a interpreter
