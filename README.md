@@ -2,7 +2,7 @@
  Simple Script Language with Kotlin as Interpreter
  
  ## HelloWorld Example
- There a tons of examples in the ./scripts/ folder you can look at. Here a basic one
+ There a ton of examples in the ./scripts/ folder you can look at. Here a basic one
  ```
  main
   println
@@ -10,12 +10,12 @@
  ```
 
  ## Execute a script
- Simply execute the jar and it will look up for .gebes files in a scripts folder (which will be automatically created).
- It's important that you execute the .jar in the console/terminal
+ Execute the jar, and it will look up for .gebes files in a scripts folder (which will be automatically created).
+ It's essential that you execute the .jar in the console/terminal because there is no GUI
  
  ### Launch arguments
  If the argument is the path, then it will execute this script in chronological order.
- If you don't want the "Executing script..." message than add `--no-prefix`.  
+ If you don't want the "Executing script..." message, then add `--no-prefix`.  
  
  Example:
  ```
@@ -26,4 +26,4 @@
  
  ## What did I learn?
  * Kotlin
- * How to write a interpreter
+ * How to write an interpreter
